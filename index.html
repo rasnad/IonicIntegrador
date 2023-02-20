@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Con estos script podemos traer cosas de code pen y que tengan el estilo y demas -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <!-- COn estos script ya reconoce sintaxis de ionic -->
+
+    <title>Ionic Demo</title>
+
+    <!-- SINGLE PAGE APP -->
+</head>
+
+<body>
+    <ion-app>
+
+        <!-- Componente de ruteo -->
+        <!-- El ruteo muestra un page u otro. -->
+        <ion-router id="ruteo">
+            <ion-route></ion-route>
+            <ion-route url="/" component="page-home"></ion-route>
+            <ion-route url="/login" component="page-login"></ion-route>
+            <ion-route url="/registro" component="page-registro"></ion-route>
+            
+        </ion-router>
+        <ion-nav></ion-nav> <!-- Esto se necesita para q funcione, porq es vanila en un framework no se necesta -->
+        <!-- Fin componente de ruteo -->
+
+        <ion-menu side="start" menu-id="first" content-id="main" id="menu">
+            <!-- De la app que estamos haciendo es el menu que se abre de costado, ionic sabe por la etiqueta de <ion-menu> -->
+
+            <ion-header>
+                <!-- Creamos el menu, creamos la secciond e la cabecera y dentro creamos la barra, toolbar que es de color azul, primary es azul-->
+                <ion-toolbar color="primary">
+                    <ion-title>Menu Principal</ion-title>
+                </ion-toolbar>
+            </ion-header>
+
+            <ion-content id="menuOpciones"> <!-- Creamos el contenido del menu -->
+               <!-- SE LO PASAMOS POR LA FUNCION ArmarMenuOpciones en codigo.js -->
+            </ion-content>
+        </ion-menu>
+        <div id="main"></div> <!-- Se necesita que se despliege en un div. sino el menu no se ve.-->
+
+        <!-- PANTALLAS -->
+
+        <page-home class="ion-page" id="pantalla-home">
+            <ion-header>
+                <ion-toolbar> <!-- Menu hamburgesa. -->
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content>
+                <p id="msgBienvenida"></p>
+
+                <ion-list>
+                    <ion-item>
+                      <ion-select id="slcFruta" placeholder="Select fruit">
+                        <ion-select-option value="apples">Apples</ion-select-option>
+                        <ion-select-option value="oranges">Oranges</ion-select-option>
+                        <ion-select-option value="bananas">Bananas</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                  </ion-list>
+
+            </ion-content>
+        </page-home>
+
+        <page-login class="ion-page" id="pantalla-login">
+            <ion-header>
+                <ion-toolbar> <!-- Menu hamburgesa. -->
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+
+            <ion-content>
+                <ion-list>
+                    <ion-item>
+                        <ion-label>EMAIL</ion-label>
+                        <ion-input value="lucaskpo987@gmail.com" id="txtLoginEmail"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>PASSWORD</ion-label>
+                        <ion-input value="lucas1234" type="password" id="txtLoginPass"></ion-input>
+                    </ion-item>
+                    <ion-button expand="full" id="btnLogin">LOGIN</ion-button>
+                </ion-list>
+                <p id="pLoginRes"></p>
+            </ion-content>
+        </page-login>
+
+        <page-registro class="ion-page" id="pantalla-registro">
+            <ion-header>
+                <ion-toolbar> <!-- Menu hamburgesa. -->
+                    <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+
+            <ion-content>
+                <ion-list>
+                    <ion-item>
+                        <ion-label>Nombre</ion-label>
+                        <ion-input id="txtRegistroNombre"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Apellido</ion-label>
+                        <ion-input id="txtRegistroApellido"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Email</ion-label>
+                        <ion-input id="txtRegistroEmail"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Direccion</ion-label>
+                        <ion-input id="txtRegistroDir"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Password</ion-label>
+                        <ion-input type="password" id="txtRegistroPass"></ion-input>
+                    </ion-item>
+                    <ion-button expand="full" id="btnRegistrar">REGISTRO</ion-button>
+                </ion-list>
+            </ion-content>
+            <p id="pRegistroRes"></p>
+        </page-registro>
+    </ion-app>
+
+    <script src="estructura.js"></script>
+    <script src="codigo.js"></script>
+</body>
+
+</html>
